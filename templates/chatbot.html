@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Demo</title>
+    <style>
+        /* Chatbot window styling */
+        #chatbot-window {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 300px;
+            height: 440px;
+            border: 1px solid black;
+            border-radius: 5px;
+            overflow: hidden;
+            display: none; /* Hide the chatbot window by default */
+        }
+        #chatbot-header {
+            background-color: #193f96;
+            color: white;
+            padding: 10px;
+            font-size: 20px;
+            font-family: system-ui;
+            font-weight: bold;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #contact-button {
+            background-color: #193f96;
+            color: black;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        
+        #chatbot-body {
+            height: 320px;
+            padding: 10px;
+            overflow-y: scroll;
+        }
+        #chatbot-footer {
+            background-color: #F0F0F0;
+            padding: 10px;
+            display: flex;
+        }
+        #chatbot-footer form {
+            display: flex;
+            flex-grow: 1;
+        }
+        #chatbot-footer input[type="text"] {
+            flex-grow: 1;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            margin-right: 5px;
+        }
+        #chatbot-footer button[type="submit"] {
+            background-color: #193f96;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px;
+            cursor: pointer;
+        }
+        /* User message styling */
+        .user-message {
+            background-color: #F0F0F0;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            font-family:'Segoe UI', Tahoma,Verdana, sans-serif;
+            font-weight: normal;
+            font-style:normal;
+
+        }
+         /* bot message styling */
+         .bot-message {
+            background-color: #F0F0F0;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            font-family:'Segoe UI', Tahoma,Verdana, sans-serif;
+            font-weight: normal;
+            font-style:normal;
+
+        }
+
+        /* Bot greeting styling */
+        .bot-greeting {
+            background-color: #4285F4;
+            color: white;
+            padding: 5px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            font-family: 'Segoe UI', Tahoma,Verdana, sans-serif;
+            font-weight: normal;
+            font-style:normal ;
+        }
+        
+       /* Chatbot button styling */
+        #chatbot-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Chatbot Demo</h1>
+    <!-- Add a chatbot button -->
+    <button id="chatbot-button">🤖</button>
+    <!-- Create a container for the chatbot window -->
+    <div id="chatbot-window">
+        <div id="chatbot-header">CliniBot
+            <button class="contact-button">📞</button>
+        </div>
+        <div id="chatbot-body"></div>
+        <div id="chatbot-footer">
+            <form>
+                <input type="text" name="query" placeholder="Enter your query here...">
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        let chatbotOpenedBefore = false;
+        const form = document.querySelector('form');
+        const chatbotButton = document.querySelector('#chatbot-button');
+        const chatbotWindow = document.querySelector('#chatbot-window');
+        const chatbotBody = document.querySelector('#chatbot-body');
+        const contactButton = document.querySelector('#contact-button');
+
+            
+        function openChatbotWindow() {
+            chatbotWindow.style.display = 'block';
+            chatbotButton.style.display = 'none'; // hide the chatbot button
+            if (!chatbotOpenedBefore) {
+                const greetingMessage = `<p class="bot-greeting"><strong>Bot:</strong> Hi there! How can I help you today?</p>`;
+                chatbotBody.innerHTML += greetingMessage;
+                chatbotOpenedBefore = true;
+            }
+        }
+    
+        function closeChatbotWindow() {
+            chatbotWindow.style.display = 'none';
+            chatbotButton.style.display = 'block'; // show the chatbot button
+        }
+    
+        chatbotButton.addEventListener('click', openChatbotWindow);
+    
+        window.addEventListener('click', event => {
+            if (event.target !== chatbotButton && !chatbotWindow.contains(event.target)) {
+                closeChatbotWindow();
+            }
+        });
+    
+        form.addEventListener('submit', async event => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch('/api/chatbot', {
+                method: 'POST',
+                body: formData
+            });
+            const text = await response.text();
+            const query = formData.get('query');
+            const message = `
+                <p class="user-message"><strong>You:</strong> ${query}</p>
+                 ${text}
+            `;
+            chatbotBody.innerHTML += message;
+            form.reset();
+
+            // Scroll to the bottom of the chatbot body to show the latest message
+            chatbotBody.scrollTop = chatbotBody.scrollHeight;
+        });
+    
+        contactButton.addEventListener('click', () => {
+            window.location.href = '/contact';
+        });
+    
+    </script>
+    </body>
+    </html>
+

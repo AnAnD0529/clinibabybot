@@ -1,0 +1,216 @@
+Clinion™- Clinical Trial Solutions
+Website link - https://www.clinion.com/
+CLINION EDC USER FAQs
+
+Topics Covered-
+* Edit Checks
+* User Management
+* Data Extraction
+* Conditional Branching
+* Query Management
+* Edit Panel
+* Global Library
+* User Login
+* Account Setup
+* Data Capture
+
+> 	Edit Checks
+Q.    Why edit checks are not firing?
+* First need to check the edit check configuration.
+* Edit check is configured correctly even though it is not firing means we need to check whether any dependent item is configured in edit check.
+* e.g., Date of visit 1 should be equal to vital signs date. First user needs to check whether the 
+dependent item is entered or not.
+
+ Q.  How to unassign pages for the particular visit?
+Ans:
+Login as superadmin.
+* Click on the configure eCRF. It will navigate the user to configuration screen.
+* Click on the Navigation bar. It will show the visit for a particular study.
+* Click on the (+) for which visit user needs to unassign the page.
+* Click on the Add page for the particular visit. It will navigate to all available pages    which are present in the study.
+* By checking the pages user can assign new pages, by unchecking the box user can unassign   the pages.
+* Publish the changes.
+
+ Q. How to add additional field for subject enrolment details in site user login?
+Ans:
+* In Clinion, the studyadmin has the access to manage site and subject management. 
+* Login with studyadmin access, In configuration settings, user can see the site and subject
+  management option. By clicking on that, it will navigate to the site and  subject management page.
+* In site and subject management, Clinion has Add enrolment details and subject details. 
+* In add enrolment details, Is additional field required is there. By clicking yes, additional field display 
+  label will be enabled in the subject details. We can add any additional field in that. Give the additional 
+  field data type and submit.
+
+Q. Why site level user not able to enter the data for lab ranges (Like pus cells)? 
+Ans:
+* For lab results, designer need to check the result for the lab parameter during configuration.
+* Based on the result of the lab parameter, we need to give the datatype.
+* e.g.: For pus cells, datatype should be string.  
+
+Q. How end users will able to see the complete data in textbox ? 
+Ans:
+* While configuring, we have multiline text box option in textbox properties. Check the multiline textbox.
+
+> USER MANAGEMENT
+Q. How to create site level users?
+Ans: Site level users can be created via below steps:
+* Login as Data Manager. Go to the footer section and select profile setup. (Refer screenshot attached below).
+* Select the site user role.
+* Select the site.
+* Select user salutation.
+* Enter user’s Name, Email I’d.
+* Create username as required.
+* Enter Mobile number.
+* Submit the details given, then the user will receive a mail to given email I’d to setup password followed with verification code.
+Note: Fields marked with *(star) are mandatory.
+
+> DATA EXTRACTION
+Q. Is there Any tentative time it takes to extract the CRF book for an ongoing study in Clinion?
+Ans: Time taken for downloading CRF book extraction depends upon the size of file.  
+
+Q. How to download audit log extraction from EDC?
+Ans: Audit log extraction can be downloaded by following steps:
+* Login as Data Manager. 
+* Go to Data Extraction in Header section as shown in below screenshot. 
+* Select Audit log extraction from dropdown.
+* You will be redirected to the respective section and select on the type of file format you want to download (i.e., Excel or PDF). 
+
+Q. How to download Lock status report?
+Ans: Lock status report can be downloaded by following steps:
+* Login as Data manager. 
+* Go to Standard reports in header section.
+* Go to Lock status report in sub header section as shown in below screenshot.
+* Select site, subject infold and locks and click on Go. 
+        
+> CONDITIONAL BRANCHING
+
+Q. Why did conditional branching configuration applied for same page is not working?
+Ans: Only Global conditional branching should be applied while configuring for same page.
+
+Q. Why did conditional branching configuration applied for different pages is not working?
+Ans: Cross Conditional branching should be applied while configuring for different pages.
+
+Q. Why there is difference in data field label name in eCRF and in conditional branching section for the same field? 
+Ans: The text given in label text field properties will reflect in conditional branching section. 
+
+> Query Management
+
+Q. Query icon is displayed at the page level but no open queries in the Panel. No queries found in the in the query list as well for the panel.
+
+Ans: 
+* Please check if any field in the panel has been modified or deleted. It is possible that the query icon is corresponding to such field.
+* Navigate to ‘Bulk query closer’ option of the Query resolution system. Queries of a deleted crf field will be available here.
+* Apply the Site, subject and visit filters to obtain the queries for the panel. 
+* Select the query to close as applicable, provide the comments and click on ‘submit’ to close the query.
+	
+Q. Previously closed query pops up again in the panel/query list.
+  Ans:
+* Check if the response provided in the field is still not within the required range.
+* Check if data has been updated in any field in the panel after the query was closed.
+* Check if the panel has been submitted again after closing the query.
+(Note: A previously closed query will re-open again if any data update has been done in the panel after closing the query and form has been ‘submitted’ again. Although the query has been closed manually, the data in the field is still not as per the requirement.)
+
+ Q. Query raised by a study monitor role has been responded by the Investigator. However, the site monitor is not able to close the query.
+ Ans:
+* Please check if the ‘Study Monitor’ role has been selected to handle closing of queries. Follow the below steps to verify the same.
+* Go to the ‘Configure query workflow’ option in the study admin login.
+* Make sure to select ‘Study monitor’ role for query assignment and click on ‘Submit’.
+(Note: The updated workflow will be effective only for future queries. This update will not resolve the assignment in existing query. Please contact the ‘Query manager’ regarding closure of such queries. These details are available in the ‘Configure query workflow’ section of the study admin.)
+
+Q. Trial level user is not able to raise query even though the RoleXFeatures and RoleXActions have been appropriately given to the role.
+Ans:
+* Please check if the role of interest has been included in the query workflow configuration.
+* Go to ‘Configure query work flow’ option in the study admin login.
+* Taking project manager role as an example, check if the role has been included in the query workflow setup table.
+* If not included, add the role using the ‘Select Role’ option.
+* The role will be displayed in the table below. Now, select all the roles to whom the Project manager can assign the queries. Click on ‘Submit’.
+* Follow the same steps to give Query assignment permissions to any other roles in a study.
+
+> EDIT PANELS
+Q: How to edit same panel with different titles?
+Ans: To achieve same panel with different titles and at various time points we have to give difference in annotations with required panel titles as per CRF design.
+
+> GLOBAL LIBRARY
+Q: How to copy pages from global library?
+Ans: To copy pages from global library please follow these steps:
+* Go to e-CRF configuration.
+* Go to Navigation, then click on Create page:
+* Click on Copy pages from Global Library as shown in the screen shot below:
+* Select the study and category from which you need to copy pages from the global library.
+
+Q:  Why user is unable to find the pages in Global library for a specific study?
+Ans: After creating pages of any study, if they are not added in global library before the study is published to production then pages won’t be available in library. 
+Please see the screenshot below. The ‘Add pages to global library pages’ is option where the study pages need to be added if they want to be found in the global library 
+
+>  User Login & Account setup
+
+Q: Where the backups will be stored and when the backup is scheduled?
+Ans: Database backups are stored on the AWS cloud S3 storage. The daily full backup schedule runs at 6:30 AM IST. As per our DRP, the RTO is 2 hrs.
+
+Q: What is the standby time after login into EDC?
+Ans: The standby time after login into EDC is 20 minutes.
+
+Q: Is the Data Extraction Reports available only for Data Manager role?
+Ans: The Features can be modified from the Studyadmin login as per your requirement, For example, If the requirement is to give the feature to the Investigator, Then the following steps need to be followed:
+* Login as Study Admin. Go to the footer section and select Role X Feature.
+* Select the Role X Feature Management.
+* Select the Role Name. (Example: Investigator).
+* Check Data Extraction and Click on “Assign & Publish”.
+Note: Please check Role X Action Management to ensure that all required fields are “Enable”.
+
+Q: How to Unlock or Reset the password for the different level users?
+Ans: The password is case sensitive hence need to use it carefully as there are only 3 attempts.
+Scenarios:
+> To reset the Client admin and Study admin Password.
+* Go to Central APP (Superadmin) 
+* Go to Admin Task on the header
+* Go to Create User
+* Click on reset password or unlock the user.
+* You can Activate or De-Activate the users as well.
+* The password will be sent to the user by noreply@clinion.com.
+> To reset or unlock the Trial Level user.
+* Go to Study admin or Client admin login then go to User Management on the Header.
+* Find the user and then unlock or reset the password.
+* You can Activate or De-Activate the users as well.
+* The password will be sent to the user by noreply@clinion.com.
+> To reset the Site Level user password.
+* Go to Data Manager login 
+* Go to Locked User in Admin Task on Footer.
+* Click on Reset Password 
+The password will be sent to the user by noreply@clinion.com
+
+? DATA CAPTURE
+Q: How to enrol screen-failed subjects in the Clinion EDC System?
+Ans: The label text “Enrollment Date” available in the Data Capture section can be modified as “Screening Date” as per the study requirements. Please reach out to the respective SPOC for the requirements. The desired changes can be done by the Clinion team only.
+
+Q:  Why are site users like Clinical Research Coordinator / Study Coordinator unable to capture subject data / enroll subjects?
+Ans: Please check if the concerned role has the required access/permissions. This activity can be done by following the below mentioned steps:
+* Login as StudyAdmin
+* Go to RoleXFeatures section 
+* Select CRC/Study coordinator from the dropdown menu
+* Select the required feature available in the list
+* Publish the changes
+
+Q: How to edit subject details wrongly captured by the site?
+Ans: In Clinion, the Data manager has the access to update the subject details from their dashboard. Please follow the steps mentioned below:
+* Log in as a Data manager & go to the “Data Capture” module.
+* Scroll down to the Subject Dashboard section. 
+* From the grid, click on the edit icon corresponding to the subject number. 
+* The “Enroll Subject” section will be enabled to edit the subject details like Subject Initial, Subject Number and Screening/Enrollment Date. 
+* Click “Update”. A message will pop up quoting - Subject Updated Successfully. 
+
+Q: The calendar in EDC shows year up to previous 50 years. How do we select date prior to say 1970s? 
+Ans: To select the date, which is more than 50 years prior, click on the oldest available year in the dropdown, the system will show further previous 50 years automatically in the calendar.
+
+Q: Why SDV option is not available for a new CRF page added post go-live? 
+Ans: Please check from the “Manage Page” section available in SuperAdmin whether “SDV Required” is selected for the respective page. If not, select on edit icon of the page and check the “SDV Required”. Save and publish the changes.
+
+Q: Why SDV/ML option is not populated after completing the eCRF data entry?
+Ans: Please check if the page in question is Saved or Submitted. SDV/ML option gets activated when the pages are Submitted. 
+( NOTE: While capturing data in eCRF, the site has option to either “Save” the page or click on “Submit & Next” button to submit the page for review. If site only saves the page, it will be reflecting in colour Red in navigation menu. The page will be submitted only after the site click on “Submit & Next” button. After successful submission the page name will turn to green in Navigation pane and SDV/ML option will get activated).
+
+
+
+
+
+
